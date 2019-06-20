@@ -78,48 +78,28 @@ namespace Практика4
         {
             // 100!
             int[] digits1 = new int[158];//результат 
-            int[] mas80 = new int[80];//для умножения
+            int[] mas100 = new int[100];//для умножения
 
-            int n = 21;
-            for (int i = 0; i < 80; i++)
+            int n = 1;
+            for (int i = 0; i < 100; i++)
             {
-                mas80[i] = n;
+                mas100[i] = n;
                 n++;
             }
-            long fak = 1;
-            for (int i = 1; i <= 20; i++)
-            {
-                fak *= i;
-            }
-            int[] mas20f = fak.ToString().Select(c => (int)char.GetNumericValue(c)).ToArray();
-            for (int i = 0; i < mas20f.Length; i++)
-            {
-                digits1[digits1.Length - 1 - i] = mas20f[mas20f.Length - 1 - i];
-            }
-
-            digits1 = MultOfMas(digits1, mas80);
+            digits1[157] = 1;   
+            digits1 = MultOfMas(digits1, mas100);
             //Show(digits1);    
 
             //2 ^ 100
             int[] digits2 = new int[158]; // результат 2^100 
-            int[] mas38 = new int[38];
-
-            long pow2 = 1;
-            for (int i = 1; i <= 62; i++)
+            mas100 = new int[100];
+            digits2[157] = 1;      
+            for (int i = 0; i < 100; i++)
             {
-                pow2 *= 2;
+                mas100[i] = 2;
             }
-
-            for (int i = 0; i < 38; i++)
-            {
-                mas38[i] = 2;
-            }
-            int[] mas2pow30 = pow2.ToString().Select(c => (int)char.GetNumericValue(c)).ToArray();
-            for (int i = 0; i < mas2pow30.Length; i++)
-            {
-                digits2[digits2.Length - 1 - i] = mas2pow30[mas2pow30.Length - 1 - i];
-            }
-            digits2 = MultOfMas(digits2, mas38);
+            
+            digits2 = MultOfMas(digits2, mas100);
             //Show(digits2);
             // 100! + 2^100
             int[] result = SumOfMas(digits1, digits2);
